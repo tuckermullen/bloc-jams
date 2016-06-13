@@ -28,6 +28,21 @@ var albumMarconi = {
     ]
 };
 
+var albumTestAlbum = {
+    title: 'Test Album Title',
+    artist: 'John Smith',
+    label: 'Columbia Records',
+    year: '1989',
+    albumArtURL: 'assets/images/album_covers/15.png',
+    songs: [
+        { title: 'Test Song 1', duration: '2:01' },
+        { title: 'Test Song 2', duration: '3:01' },
+        { title: 'Test Song 3', duration: '5:21' },
+        { title: 'Test Song 4', duration: '1:14' },
+        { title: 'Test Song 5', duration: '6:15' }
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
         '<tr class="album-view-song-item">'
@@ -58,6 +73,17 @@ var setCurrentAlbum = function(album) {
         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
     }
 };
+
+window.onload = function*() {
+    var albumImages = document.getElementsByClassName('album-cover-art')[0];
+    
+    window.addEventListener("click", function(event) {
+        console.log(event);
+        console.log // Got stuck here. I know I need a 'for loop' to loop through the album 
+                    // cover images but how do I go about implementing the loop into this 
+                    // window load function?
+    })
+}
 
 window.load = function() {
     setCurrentAlbum(albumPicasso);
