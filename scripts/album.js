@@ -55,13 +55,14 @@ var createSongRow = function(songNumber, songName, songLength) {
     return template;
 };
 
-var setCurrentAlbum = function(album) {
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
     
+
+var setCurrentAlbum = function(album) {
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -74,17 +75,16 @@ var setCurrentAlbum = function(album) {
     }
 };
 
-window.onload = function*() {
-    var albumImages = document.getElementsByClassName('album-cover-art')[0];
-    
-    window.addEventListener("click", function(event) {
-        console.log(event);
-        console.log // Got stuck here. I know I need a 'for loop' to loop through the album 
-                    // cover images but how do I go about implementing the loop into this 
-                    // window load function?
-    })
-}
-
-window.load = function() {
+window.onload = function() {
     setCurrentAlbum(albumPicasso);
+    
+    var albums = [albumPicasso, albumMarconi, albumTestAlbum];
+    var index = 1;
+    albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(album[index]);
+        index++;
+        if (index == album.length) {
+            index = 0;
+        }
+    });
 };
