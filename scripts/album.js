@@ -35,7 +35,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         + ' <td class="song-item-title">' + songName + '</td>'
         + ' <td class="song-item-duration">' + songLength + '</td>'
         + '</tr>'
-    ;
+        ;
     
     return template;
 };
@@ -54,11 +54,11 @@ var setCurrentAlbum = function(album) {
     
     albumSongList.innerHTML = '';
     
-    for (var i = 0; i = album.songs.length; i++) {
+    for (var i = 0; i < album.songs.length; i++) {
         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
     }
 };
 
-window.load = function() {
+window.onload = function() {
     setCurrentAlbum(albumPicasso);
 };
