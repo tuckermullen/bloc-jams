@@ -70,7 +70,7 @@ var setCurrentAlbum = function(album) {
     
     albumSongList.innerHTML = '';
     
-    for (var i = 0; i = album.songs.length; i++) {
+    for (var i = 0; i < album.songs.length; i++) {
         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
     }
 };
@@ -81,7 +81,7 @@ window.onload = function() {
     var albums = [albumPicasso, albumMarconi, albumTestAlbum];
     var index = 1;
     albumImage.addEventListener("click", function(event) {
-        setCurrentAlbum(album[index]);
+        setCurrentAlbum(albums[index]);
         index++;
         if (index == album.length) {
             index = 0;
